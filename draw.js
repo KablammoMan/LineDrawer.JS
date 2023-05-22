@@ -14,6 +14,8 @@ window.addEventListener("load", e => {
         elem.style.margin = "0";
         elem.style.padding = "0";
     }
+    canvas.style.width = window.innerWidth;
+    canvas.style.height = window.innerHeight;
     canvas.style.backgroundColor = "#aaa";
     document.body.appendChild(canvas);
 });
@@ -21,4 +23,8 @@ window.addEventListener("load", e => {
 window.addEventListener("resize", e => {
     canvas.style.width = window.innerWidth;
     canvas.style.height = window.innerHeight;
-})
+});
+
+window.addEventListener("mousemove", e => {
+    
+});

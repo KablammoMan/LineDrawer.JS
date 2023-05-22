@@ -6,7 +6,19 @@ class obj {
     }
 }
 
-const canvas = document.createElement("canvas");
+class area {
+    constructor() {
+        this.canvas = document.createElement("canvas");
+        this.canvas.style.backgroundColor = "#aaa";
+        document.body.insertBefore(this.canvas, document.body.firstChild);
+    }
+    update_size() {
+        this.canvas.style.width = window.innerWidth.toString() + "px";
+        this.canvas.style.height = window.innerHeight.toString() + "px";
+    }
+}
+
+const draw_area = new area();
 
 window.addEventListener("load", e => {
     let all_elems = document.querySelectorAll("*");
@@ -14,18 +26,13 @@ window.addEventListener("load", e => {
         elem.style.margin = "0";
         elem.style.padding = "0";
     }
-    canvas.style.width = window.innerWidth;
-    canvas.style.height = window.innerHeight;
-    canvas.style.backgroundColor = "#aaa";
-    document.body.appendChild(canvas);
+    draw_area.update_size();
 });
 
 window.addEventListener("resize", e => {
-    canvas.style.width = window.innerWidth;
-    canvas.style.height = window.innerHeight;
+    draw_area.update_size();
 });
 
 window.addEventListener("mousemove", e => {
-    canvas.style.width = window.innerWidth;
-    canvas.style.height = window.innerHeight;
+    draw_area.update_size();
 });

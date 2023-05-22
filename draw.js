@@ -26,5 +26,6 @@ window.addEventListener("resize", e => {
 });
 
 window.addEventListener("mousemove", e => {
-    
+    canvas.style.width = window.innerWidth;
+    canvas.style.height = window.innerHeight;
 });

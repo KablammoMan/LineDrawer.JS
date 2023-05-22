@@ -14,6 +14,7 @@ class obj {
     }
 }
 
+// Canvas Class
 class area {
     constructor() {
         this.canvas = document.createElement("canvas");

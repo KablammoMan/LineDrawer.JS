@@ -14,6 +14,7 @@ window.addEventListener("load", e => {
         elem.style.margin = "0";
         elem.style.padding = "0";
     }
+    canvas.style.backgroundColor = "#aaa";
     document.body.appendChild(canvas);
 });
 

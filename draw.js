@@ -67,7 +67,7 @@ const draw_area = new area();
 const start_button = document.createElement("button");
 var update_int;
 var started = false;
-const amount = 5;
+const amount = 3;
 
 window.addEventListener("load", e => {
     draw_area.update_size();
@@ -107,7 +107,7 @@ window.addEventListener("click", e => {
     if (e.target.id == "start") {
         started = true;
         for (let i = 0; i<amount; i++) {
-            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2*((i+1)%(amount-1)))*2-amount*2*((i+1)%(amount-1))), 5, `#${i+5}${i*3}${i}`))
+            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i+5}${i*3}${i}`))
         }
         document.getElementById("start").classList.add("hidden")
         update_int = setInterval(update, 10);

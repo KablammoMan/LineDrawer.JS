@@ -7,3 +7,7 @@
 canvas {
     background-color: #333;
 }
+
+.hidden {
+    display: none;
+}

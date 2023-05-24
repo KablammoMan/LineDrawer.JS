@@ -44,6 +44,10 @@ class area {
 var obs = [];
 
 function update() {
+    if (actualdone) {
+        clearInterval(update_int);
+        alert("Done");
+    }
     for (let i = 0; i < obs.length; i++) {
         for (let j = 0; j < obs.length-i; j++) {
             draw_area.ctx.strokeStyle = obs[i].col;
@@ -63,8 +67,7 @@ function update() {
         // draw_area.ctx.fillRect(window.innerWidth / 2 + (ob.x - ob.size/2), window.innerHeight / 2 + (ob.y - ob.size/2), ob.size, ob.size)
     }
     if (done) {
-        clearInterval(update_int);
-        alert("Done");
+        actualdone = true;
     }
     done = true;
     for (let ob of obs) {
@@ -80,6 +83,7 @@ const start_button = document.createElement("button");
 var update_int;
 var started = false;
 var done = false;
+var actualdone = false;
 const amount = 3;
 
 window.addEventListener("load", e => {

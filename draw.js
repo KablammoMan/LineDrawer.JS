@@ -6,6 +6,7 @@ class obj {
         this.size = size;
         this.col = col;
         this.deg = 0;
+        this.updates = 0;
         this.x = radius * 100;
         this.y = 0;
         this.px = this.x;
@@ -17,7 +18,8 @@ class obj {
         this.py = this.y;
         this.x = Math.cos(this.rad) * this.radius;
         this.y = Math.sin(this.rad) * this.radius;
-        this.deg += (1 * this.speed);
+        this.deg += this.speed;
+        this.updates++;
     }
 }
 
@@ -60,6 +62,16 @@ function update() {
         // draw_area.ctx.fillStyle = "#000";
         // draw_area.ctx.fillRect(window.innerWidth / 2 + (ob.x - ob.size/2), window.innerHeight / 2 + (ob.y - ob.size/2), ob.size, ob.size)
     }
+    if (done) {
+        clearInterval(update_int);
+        alert("Done");
+    }
+    done = true;
+    for (let ob of obs) {
+        if (ob.x != ob.radius || ob.updates == 1) {
+            done = false;
+        }
+    }
 }
 
 
@@ -67,6 +79,7 @@ const draw_area = new area();
 const start_button = document.createElement("button");
 var update_int;
 var started = false;
+var done = false;
 const amount = 3;
 
 window.addEventListener("load", e => {
@@ -107,7 +120,7 @@ window.addEventListener("click", e => {
     if (e.target.id == "start") {
         started = true;
         for (let i = 0; i<amount; i++) {
-            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i+5}${i*3}${i}`))
+            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i}${i*3}${i*4}`))
         }
         document.getElementById("start").classList.add("hidden")
         update_int = setInterval(update, 10);

@@ -47,6 +47,7 @@ function update() {
     if (actualdone) {
         clearInterval(update_int);
         alert("Done");
+        // window.location.reload();
     }
     for (let i = 0; i < obs.length; i++) {
         for (let j = 0; j < obs.length-i; j++) {
@@ -123,10 +124,30 @@ window.addEventListener("mousemove", e => {
 window.addEventListener("click", e => {
     if (e.target.id == "start") {
         started = true;
+        let random = Math.floor(Math.random() * 6);
         for (let i = 0; i<amount; i++) {
-            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i}${i*3}${i*4}`))
+            switch(random) {
+                case 0:
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i}${i*3}${i*4}`));
+                    break;
+                case 1:
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i}${i*4}${i*3}`));
+                    break;
+                case 2:
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*3}${i}${i*4}`));
+                    break;
+                case 3:
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*3}${i*4}${i}`));
+                    break;
+                case 4:
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*4}${i}${i*3}`));
+                    break;
+                case 5:
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*4}${i*3}${i}`));
+                    break;
+            }
         }
-        document.getElementById("start").classList.add("hidden")
+        document.getElementById("start").classList.add("hidden");
         update_int = setInterval(update, 10);
     }
 })

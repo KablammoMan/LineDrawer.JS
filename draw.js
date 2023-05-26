@@ -123,31 +123,31 @@ window.addEventListener("click", e => {
 
 function start() {
     started = true;
-        let random = Math.floor(Math.random() * 6);
-        for (let i = 0; i<amount; i++) {
-            let colour = null;
-            switch(random) {
-                case 0:
-                    colour = `#${i}${i*3}${i*4}`;
-                    break;
-                case 1:
-                    colour = `#${i}${i*4}${i*3}`;
-                    break;
-                case 2:
-                    colour = `#${i*3}${i}${i*4}`;
-                    break;
-                case 3:
-                    colour = `#${i*3}${i*4}${i}`;
-                    break;
-                case 4:
-                    colour = `#${i*4}${i}${i*3}`;
-                    break;
-                case 5:
-                    colour = `#${i*4}${i*3}${i}`;
-                    break;
-            }
-            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, colour));
+    let random = Math.floor(Math.random() * 6);
+    for (let i = 0; i<amount; i++) {
+        let colour = null;
+        switch(random) {
+            case 0:
+                colour = `#${i}${i*3}${i*4}`;
+                break;
+            case 1:
+                colour = `#${i}${i*4}${i*3}`;
+                break;
+            case 2:
+                colour = `#${i*3}${i}${i*4}`;
+                break;
+            case 3:
+                colour = `#${i*3}${i*4}${i}`;
+                break;
+            case 4:
+                colour = `#${i*4}${i}${i*3}`;
+                break;
+            case 5:
+                colour = `#${i*4}${i*3}${i}`;
+                break;
         }
-        document.getElementById("start").classList.add("hidden");
-        update_int = setInterval(update, 10);
+        obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, colour));
+    }
+    document.getElementById("start").classList.add("hidden");
+    update_int = setInterval(update, 10);
 }

@@ -95,28 +95,19 @@ window.addEventListener("load", e => {
     start_button.style.width = "50%";
     start_button.style.position = "absolute";
     start_button.style.bottom = "50px";
-    start_button.style.left = (window.innerWidth/2 - start_button.clientWidth/2).toString() + "px";
+    start_button.style.left = "50%"//(window.innerWidth/2 - start_button.clientWidth/2).toString() + "px";
+    start_button.style.transform = "translate(-50%, 0)"
     start_button.style.padding = "20px";
     document.body.appendChild(start_button);
 });
 
 window.addEventListener("resize", e => {
-    start_button.style.width = "50%";
-    start_button.style.position = "absolute";
-    start_button.style.bottom = "50px";
-    start_button.style.left = (window.innerWidth/2 - start_button.clientWidth/2).toString() + "px";
-    start_button.style.padding = "20px";
     if (!started) {
         draw_area.update_size();
     }
 });
 
 window.addEventListener("mousemove", e => {
-    start_button.style.width = "50%";
-    start_button.style.position = "absolute";
-    start_button.style.bottom = "50px";
-    start_button.style.left = (window.innerWidth/2 - start_button.clientWidth/2).toString() + "px";
-    start_button.style.padding = "20px";
     if (!started) {
         draw_area.update_size();
     }
@@ -127,26 +118,28 @@ window.addEventListener("click", e => {
         started = true;
         let random = Math.floor(Math.random() * 6);
         for (let i = 0; i<amount; i++) {
+            let colour = null;
             switch(random) {
                 case 0:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i}${i*3}${i*4}`));
+                    colour = `#${i}${i*3}${i*4}`;
                     break;
                 case 1:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i}${i*4}${i*3}`));
+                    colour = `#${i}${i*4}${i*3}`;
                     break;
                 case 2:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*3}${i}${i*4}`));
+                    colour = `#${i*3}${i}${i*4}`;
                     break;
                 case 3:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*3}${i*4}${i}`));
+                    colour = `#${i*3}${i*4}${i}`;
                     break;
                 case 4:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*4}${i}${i*3}`));
+                    colour = `#${i*4}${i}${i*3}`;
                     break;
                 case 5:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*4}${i*3}${i}`));
+                    colour = `#${i*4}${i*3}${i}`;
                     break;
             }
+            obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, colour));
         }
         document.getElementById("start").classList.add("hidden");
         update_int = setInterval(update, 10);

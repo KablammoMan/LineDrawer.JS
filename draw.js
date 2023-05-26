@@ -86,7 +86,7 @@ var started = false;
 var done = false;
 var actualdone = false;
 const amount = 3;
-const sped = 1;
+const sped = 2;
 
 window.addEventListener("load", e => {
     draw_area.update_size();
@@ -95,10 +95,11 @@ window.addEventListener("load", e => {
     start_button.style.width = "50%";
     start_button.style.position = "absolute";
     start_button.style.bottom = "50px";
-    start_button.style.left = "50%"//(window.innerWidth/2 - start_button.clientWidth/2).toString() + "px";
+    start_button.style.left = "50%"
     start_button.style.transform = "translate(-50%, 0)"
     start_button.style.padding = "20px";
     document.body.appendChild(start_button);
+    // start();
 });
 
 window.addEventListener("resize", e => {
@@ -115,7 +116,13 @@ window.addEventListener("mousemove", e => {
 
 window.addEventListener("click", e => {
     if (e.target.id == "start") {
-        started = true;
+        start();
+    }
+});
+
+
+function start() {
+    started = true;
         let random = Math.floor(Math.random() * 6);
         for (let i = 0; i<amount; i++) {
             let colour = null;
@@ -143,5 +150,4 @@ window.addEventListener("click", e => {
         }
         document.getElementById("start").classList.add("hidden");
         update_int = setInterval(update, 10);
-    }
-})
+}

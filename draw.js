@@ -46,7 +46,7 @@ var obs = [];
 function update() {
     if (actualdone) {
         clearInterval(update_int);
-        alert("Done");
+        setTimeout(() => {alert("Done")}, 1000);
         // window.location.reload();
     }
     for (let i = 0; i < obs.length; i++) {
@@ -86,6 +86,7 @@ var started = false;
 var done = false;
 var actualdone = false;
 const amount = 3;
+const sped = 1;
 
 window.addEventListener("load", e => {
     draw_area.update_size();
@@ -128,22 +129,22 @@ window.addEventListener("click", e => {
         for (let i = 0; i<amount; i++) {
             switch(random) {
                 case 0:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i}${i*3}${i*4}`));
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i}${i*3}${i*4}`));
                     break;
                 case 1:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i}${i*4}${i*3}`));
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i}${i*4}${i*3}`));
                     break;
                 case 2:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*3}${i}${i*4}`));
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*3}${i}${i*4}`));
                     break;
                 case 3:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*3}${i*4}${i}`));
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*3}${i*4}${i}`));
                     break;
                 case 4:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*4}${i}${i*3}`));
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*4}${i}${i*3}`));
                     break;
                 case 5:
-                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*2)*2-amount*2), 5, `#${i*4}${i*3}${i}`));
+                    obs.push(new obj(i+1, Math.ceil(Math.random() * (amount*sped*2)-amount*sped), 5, `#${i*4}${i*3}${i}`));
                     break;
             }
         }
